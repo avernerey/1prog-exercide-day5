@@ -1,21 +1,22 @@
-from random import randnt
-"""Give a name and make comments"""
+from random import randint
+
+"""Retourne une liste contenant une couleur pour chaque pion"""
 def initCache(nbColors=6,nbPawns=4):
-    retrn [randint(1,nbColors) for i in range(nbPawns)]
+    return [randint(1,nbColors) for i in range(nbPawns)]
  
-"""Give a name and make comments"""
+"""Demande à l'utilisateur nbPawns chiffres compris entre 1 et nbColors"""
 def choose(nbColors=6,nbPawns=4):
-    nocorrect = True
-    while nocorrect:
-        nocorrect = False
+    incorrect = True
+    while incorrect:
+        incorrect = False
         selected = input('Input your proposal: ')
-        if len(selecte) == nbPawns:
+        if len(selected) == nbPawns:
             selected = [int(x) for x in list(selected)]
             for x in selected:
-                if (x<1) or (x>nbColor):
-                    nocorrect = True
+                if (x<1) or (x>nbColors):
+                    incorrect = True
         else:
-            ncorrect = True
+            incorrect = True
     return selected
  
 """Give a name and make comments"""
