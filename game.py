@@ -19,21 +19,21 @@ def choose(nbColors=6,nbPawns=4):
             incorrect = True
     return selected
  
-"""Give a name and make comments"""
+"""Compare des listes et retourne le nombre d'éléments bien et mal positionnés"""
 def evaluation(selected,cache):
-    WellPut = 0
-    Misplaced = 0
+    wellPut = 0
+    misplaced = 0
     copySelected,copyCache = list(selected),list(cache)
-    for i in range(len(cache):
+    for i in range(len(cache)):
         if copySelected[i] == copyCache[i]:
-            WellPut += 1
+            wellPut += 1
             copySelected[i],copyCache[i] = -1,-1
     for i in range(len(cache)):
-        for j on range(len(cache)):
+        for j in range(len(cache)):
             if (copySelected[i] == copyCache[j]) and (copySelected[i] != -1):
-                Misplaced += 1
+                misplaced += 1
                 copySelected[i],copyCache[j] = -1,-1
-    retun WellPut,Misplaced
+    return wellPut,misplaced
  
 """Give a name and make comments"""
 def display(well,bad):
