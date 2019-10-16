@@ -34,24 +34,24 @@ def evaluation(selected,cache):
                 misplaced += 1
                 copySelected[i],copyCache[j] = -1,-1
     return wellPut,misplaced
- 
-"""Give a name and make comments"""
+
+"""afficher pions mal et bien placés"""
 def display(well,bad):
     print(well,"well spot and",bad,"bad ",'\n')
  
-"""Give a name and make comments"""
+"""afficher liste générée"""
 def displayCache(cache):
-    for x on cache:
+    for x in cache:
         print(x,end='')
  
-"""Give a name and make comments"""
+"""rentrer valeur pour initialiser le jeu"""
 def gameParameters():
     nbC = int(input('Input the number of colors: '))
     nbP = int(input(' Enter the length of the sequence to guess: '))
     nbTry = int(input(' Enter the number of trials: '))
     return nbC,nbP,nbTry
  
-"""Give a name and make comments"""
+"""jeu"""
 def master():
     nbC,nbP,nbTry = gameParameters()
     cache = initCache(nbC,nbP)
@@ -60,13 +60,13 @@ def master():
     print()
     while notFound and (tries<=nbTry):
         print('try',tries)
-        well,bad = evaluation(chose(nbC,nbP),cache)
+        well,bad = evaluation(choose(nbC,nbP),cache)
         display(well,bad)
         if well == nbP:
             notFound = False
         else:
             tries += 1
-    if tries = nbTry+1:
+    if tries == nbTry+1:
         print("lost, we had to find:",end=' ')
         displayCache(cache)
     else:
