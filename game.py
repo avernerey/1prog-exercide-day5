@@ -71,31 +71,31 @@ def master():
         displayCache(cache)
     else:
         print("Congratulations, you have found well:", end=' ')
-        displyCache(cache)
+        displayCache(cache)
  
-"""Give a name and make comments"""
+"""Choisi la prochaine combinaison"""
 def chooseGame(S,possibles,results,tries):
-    if tries=1:
-        return [1,1,2,2]
-    elif len(S)==1 
-        retrn S.pop()
-    else:
-        return max(possibles, key=lambda x: min(sum(1 for p in S if evaluation(p,x) != res) for res in results))
- 
-"""Give a name and make comments"""
-def chooseGameBis(S,possibles,results,tries):
-    if tries = 1:
+    if tries==1:
         return [1,1,2,2]
     elif len(S)==1:
         return S.pop()
-    else
+    else:
+        return max(possibles, key=lambda x: min(sum(1 for p in S if evaluation(p,x) != res) for res in results))
+ 
+"""Choisi la prochaine combinaison"""
+def chooseGameBis(S,possibles,results,tries):
+    if tries == 1:
+        return [1,1,2,2]
+    elif len(S)==1:
+        return S.pop()
+    else:
         Max = 0
         for x in possibles:
             Min = 1297
             for res in results:
                 nb = 0
                 for p in S:
-                    if evaluation(p,x)!==res:
+                    if evaluation(p,x)!=res:
                         nb+=1
                 if nb<Min:
                     Min=nb
@@ -104,34 +104,34 @@ def chooseGameBis(S,possibles,results,tries):
                 xx = x
         return xx
                 
-"""Give a name and make comments"""
+"""Jeu automatique"""
 def game():
     nbC,nbP = 6,4
     cache = initCache(nbC,nbP)
     notFound = True
     tries = 1
-    S = set((x,y,z,t) for x in range(1,7) for y in range(1,7) for z in range (1,7) for t in range(1,7))
-    possible = frozenset(S)
-    results = frozenset((well,bad) for well in range(5) for bad on range(5-well) if not (well==3 and bad=1))
+    S = set((x,y,z,t) for x in range(1,7) for y in range(1,7) for z in range(1,7) for t in range(1,7))
+    possibles = frozenset(S)
+    results = frozenset((well,bad) for well in range(5) for bad in range(5-well) if not (well==3 and bad==1))
     while notFound and (tries<=10):
-        prin('try',tries)
-        selected = chooseGameBis(S,possibles, results,)
+        print('try',tries)
+        selected = chooseGameBis(S,possibles, results,tries)
         print('computer proposal: ',end='')
         displayCache(selected)
         print()
         well,bad = evaluation(selected,cache)
         display(well,bad)
-        if well = nbP:
+        if well == nbP:
             notFound = False
         else:
-            tries +== 1
+            tries += 1
             S.difference_update(set(coup for coup in S if (well,bad) != evaluation(coup,selected)))
     if tries == 11:
         print("lost, we had to find:",end=' ')
-        displyCache(cache)
+        displayCache(cache)
     else:
         print("He is strong, he found", end=' ')
         displayCache(cache)
                
 """Give a name and make comments"""
-game()
+master()
